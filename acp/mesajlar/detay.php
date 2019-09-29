@@ -38,6 +38,12 @@ $people = $statement->fetchAll(PDO::FETCH_OBJ);
   <div class="card mt-5">
     <div class="card-header">
       <h2>Mesaj</h2>
+	  				<button type="button" class="btn btn-danger" data-toggle="modal" data-target="#sil">
+					Mesajı Sil
+				</button>
+				<button type="button" class="btn btn-success" onclick="window.location.href='/acp/mesajlar/index'">
+					Geri Dön
+				</button>
     </div>
     <div class="card-body">
       <table class="table table-bordered">
@@ -72,19 +78,35 @@ $people = $statement->fetchAll(PDO::FETCH_OBJ);
 
                         <div class="controls">
 
+				<div class="modal fade" id="sil" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+				<div class="modal-dialog" role="document">
+					<div class="modal-content">
+						<div class="modal-header">
+							<h5 class="modal-title" id="exampleModalLabel">Mesaj Sil</h5>
+							<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+								<span aria-hidden="true">&times;</span>
+							</button>
+						</div>
+						<div class="modal-body">
+				  					<form id="contact-form" method="post" action="delete.php" role="form">
+
                             <div class="row">
                                 <div class="col-md-12">
                                     <div class="form-group">
-                                        <label for="form_name">Mesaj Silme</label>
                                         <input id="form_name" type="text" name="id" class="form-control" placeholder="Silinicek Mesajın ID'sini giriniz" required="required" data-error="ID gereklidir.">
                                         <div class="help-block with-errors"></div>
                                     </div>
                                 </div>
 								<div class="col-md-12">
-                                    <input type="submit" name="sil" class="btn btn-success btn-send" value="Sil">
+                                    <input type="submit" name="sil" class="btn btn-danger" value="Sil">
+									<button type="button" class="btn btn-success" data-dismiss="modal">Kapat</button>
                                 </div>
 								</div>
 								</form>
+						</div>
+					</div>
+				</div>
+			</div>	
 
     </div>
   </div>

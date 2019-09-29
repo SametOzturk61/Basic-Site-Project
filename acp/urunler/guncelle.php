@@ -30,24 +30,34 @@ $people = $statement->fetchAll(PDO::FETCH_OBJ);
   </head>
 <body>
         <?php foreach($people as $person): ?>
-		<?php 
+		<?php		
 		$Resim = $person->Resim;
 		if($Ad == ""){
-		$Ad == $person->Ad;
+		$Ad = $person->Ad;
 		}
-        else 	
+		if($Fiyat == ""){
+		$Fiyat = $person->Fiyat;
+		}
+		if($Stok == ""){
+		$Stok = $person->Stok;
+		} 
+        		if(!is_numeric($Fiyat) || !is_numeric($Stok)){
+            	header("refresh:2;url=http://localhost/acp/urunler/index");
+				die('HATA ! Fiyat veya stok sadece rakam ile belirlenmelidir.');  
+        }		
 		?>
         <?php endforeach; ?>
 		<?php
+		
 		   										$sonuc = $db->prepare("UPDATE urunler set Resim=?, Ad=?, Fiyat=?, Stok=?");
 						$sonuc->execute(array($Resim,$Ad,$Fiyat,$Stok));
    if ($sonuc){
 header("refresh:2;url=http://localhost/acp/urunler/index");
-                            die($id. ' Id li Ürün Silindi ');   
+                            die($id. ' ID li Ürün Başarıyla Güncellendi.');   
    }
    else {
 header("refresh:2;url=http://localhost/acp/urunler/index");
-                            die("Basarisiz");   
+                            die('HATA !' . $id . 'li Ürün Güncellenemedi.');   
    }
 ?>
 

@@ -31,7 +31,6 @@ require 'sayfalar/menu.php';
       <table class="table table-bordered">
         <tr>
           <th></th>
-          <th>ID</th>
           <th>Ürün Adı</th>
           <th>Fiyatı</th>
           <th>Stok Durumu</th>
@@ -39,7 +38,6 @@ require 'sayfalar/menu.php';
         <?php foreach($people as $person): ?>
           <tr>		
 		    <td><img src="<?= $person->Resim; ?>" width="100" height="100"></img></td>
-            <td><?= $person->ID; ?></td>
             <td><?= $person->Ad; ?></td>
             <td><?= $person->Fiyat; ?></td>
             <td><?php if($person->Stok > 0){
@@ -58,22 +56,7 @@ require 'sayfalar/menu.php';
 
                         <div class="controls">
 
-                            <div class="row">
-                                <div class="col-md-12">
-                                    <div class="form-group">
-                                        <label for="form_name">Detaylı Ürün Görüntüleme</label>
-                                        <input id="form_name" type="text" name="id" class="form-control" placeholder="Görüntülenecek Ürünün ID'sini giriniz" required="required" data-error="ID gereklidir.">
-                                        <div class="help-block with-errors"></div>
-                                    </div>
-                                </div>
-								<div class="col-md-12">
-                                    <input type="submit" name="görüntüle" class="btn btn-success btn-send" value="Görüntüle">
-                                </div>
-								</div>
-								</form>
-
-    </div>
-  </div>
+</div>
 </div></div></div>
 
     <!-- Optional JavaScript -->
